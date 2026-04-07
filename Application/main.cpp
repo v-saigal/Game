@@ -15,15 +15,16 @@ int main(int argc, char* args[])
     // --- Initialize GameState ---
     std::string names[6] = { "Asterie", "Khalmariat", "Benzaiten", "Abe", "Maff", "Luminea" };
     int entIDs[6] = { 0, 1, 2, 3, 4, 5 };
-    int xLocs[6] = { 1, 12, 34, 17, 42, 28 };
-    int yLocs[6] = { 1, 3, 7, 12, 5, 14 };
+    int xLocs[6] = { 1, 1, 1, 2, 2, 2 };
+    int yLocs[6] = { 1, 2, 3, 1, 2, 3 };
 
     GameState gs(48, 16);
     
     for (int i = 0; i < 6; i++)
     {
         Position pos{xLocs[i], yLocs[i]};
-        gs.entities.push_back(Entity(names[i], xLocs[i], yLocs[i], entIDs[i]));
+        gs.positionIndex[gs.toIndex(pos)] = entIDs[i];
+        gs.entities.push_back(Entity(names[i], pos, entIDs[i]));
     }
 
    

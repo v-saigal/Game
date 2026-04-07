@@ -29,8 +29,8 @@ void LRenderer::handleEvent(const GameEvent& e) {
         auto move = std::get<MoveEvent>(e.data);
         auto it = sprites.find(move.entityID);
         if (it != sprites.end()) {
-            float x = move.toX * kTileMapWidth;
-            float y = move.toY * kTileMapHeight;
+            float x = move.toPos.x * kTileMapWidth;
+            float y = move.toPos.y * kTileMapHeight;
             it->second->moveTo(x, y);
         }
     }
@@ -40,8 +40,8 @@ void LRenderer::startEvent(const GameEvent& e) {
         auto move = std::get<MoveEvent>(e.data);
         auto it = sprites.find(move.entityID);
         if (it != sprites.end()) {
-            float x = move.toX * kTileMapWidth;
-            float y = move.toY * kTileMapHeight;
+            float x = move.toPos.x * kTileMapWidth;
+            float y = move.toPos.y * kTileMapHeight;
             it->second->moveTo(x, y);
         }
     }

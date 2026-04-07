@@ -6,6 +6,7 @@
 #include "Map.h"
 #include <random>
 #include <unordered_map>
+#include "Position.h"
 struct GameState
 {
     static constexpr int EMPTY_TILE = -1;
@@ -25,24 +26,24 @@ struct GameState
     }
 
     // Convert (x,y) to flat index
-    int toIndex(int x, int y) const
+    int toIndex(Position pos) const
     {
-        return y * map.width + x;
+        return pos.y * map.width + pos.x;
     }
 
     // Safe accessors
-    int entityAt(int x, int y) const
+    int entityAt(Position pos) const
     {
-        return positionIndex[toIndex(x, y)];
+        return positionIndex[toIndex(pos)];
     }
 
-    void setEntity(int x, int y, int id)
+    void setEntity(Position pos, int id)
     {
-        positionIndex[toIndex(x, y)] = id;
+        positionIndex[toIndex(pos)] = id;
     }
 
-    void clearTile(int x, int y)
+    void clearTile(Position pos)
     {
-        positionIndex[toIndex(x, y)] = EMPTY_TILE;
+        positionIndex[toIndex(pos)] = EMPTY_TILE;
     }
 };

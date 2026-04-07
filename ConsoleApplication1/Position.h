@@ -19,5 +19,13 @@ struct PositionHash
 };
 
 bool isAdjacent(Position pos1, Position pos2) {
+    int xDif = abs(pos1.x - pos2.x);
+    int yDif = abs(pos1.y - pos2.y);
+    if (abs(xDif - yDif) == 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
 
 }

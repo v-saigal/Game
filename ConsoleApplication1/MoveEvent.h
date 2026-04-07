@@ -1,10 +1,10 @@
+#include "Position.h"
+
 struct MoveEvent
 {
     int entityID;
 
-    int fromX;
-    int fromY;
+    Position fromPos;
+    Position toPos;
 
-    int toX;
-    int toY;
 };
