@@ -6,4 +6,5 @@
   <Project Path="Application/Application.vcxproj" Id="015664c6-ec72-4ddf-9573-cb6137e32671" />
   <Project Path="ConsoleApplication1/ConsoleApplication1.vcxproj" Id="fa2fbdd0-bcb9-428a-acbf-81116a4fb38c" />
   <Project Path="Game/Game.vcxproj" Id="3364d836-7637-4b59-a093-b2fd842d6efd" />
+  <Project Path="GameTesting/GameTesting.vcxproj" Id="e7a9ec6a-f015-4787-88a5-eeda65e31f73" />
 </Solution>

@@ -10,6 +10,7 @@
 #include "TurnResult.h"
 #include "TurnManager.h"
 #include "Position.h"
+
 int main(int argc, char* args[])
 {
     // --- Initialize GameState ---
@@ -17,16 +18,18 @@ int main(int argc, char* args[])
     int entIDs[6] = { 0, 1, 2, 3, 4, 5 };
     int xLocs[6] = { 1, 1, 1, 2, 2, 2 };
     int yLocs[6] = { 1, 2, 3, 1, 2, 3 };
+    Position newPos{ 0,1 };
+    //GameState gs(48, 16);
+    GameState gs(12, 8);
 
-    GameState gs(48, 16);
-    
     for (int i = 0; i < 6; i++)
     {
         Position pos{xLocs[i], yLocs[i]};
         gs.positionIndex[gs.toIndex(pos)] = entIDs[i];
         gs.entities.push_back(Entity(names[i], pos, entIDs[i]));
+        
     }
-
+    
    
 
     // --- Initialize SDL ---
@@ -44,7 +47,12 @@ int main(int argc, char* args[])
     LTimer frameTimer;
     //Simulate first turn of logic ---
    TurnManager tm;
-   TurnResult result = tm.simulateTurn(gs);
+   
+    TurnResult result = tm.simulateTurn(gs);
+   
+   while (true) {
+       TurnResult result = tm.simulateTurn(gs);
+   }
    // Process game events (movement, combat, etc.)
    gameRenderer.processEvents(result);
    gameRenderer.rs = RenderState::PlayingEvents;

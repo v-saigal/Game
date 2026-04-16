@@ -11,6 +11,7 @@ public:
 private:
     MoveSystem movement;
     CombatSystem combat;
+    void cleanupTurn(GameState& state);
 };
 
 
