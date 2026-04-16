@@ -8,19 +8,14 @@ Map::Map(int _width, int _height) {
 Location& Map::getLocation(int x, int y) {
     return grid[y][x];
 }
-bool Map::xInBounds(int x) {
-    if (x < width - 1 && x > -1) {
+bool Map::posInBounds(Position position) {
+    if (position.x < width - 1 && position.x > -1 && position.y < height - 1 && position.y > -1) {
         return true;
     };
     return false;
 };
 
-bool Map::yInBounds(int y) {
-    if (y < height - 1 && y > -1) {
-        return true;
-    };
-    return false;
-};
+
 void Map::mapGen() {
     std::random_device r;
 

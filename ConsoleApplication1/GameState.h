@@ -15,6 +15,10 @@ struct GameState
     Map map;
     std::vector<Entity> entities;
     std::vector<int> positionIndex;
+   
+   
+    
+    std::vector<std::pair<int, int>> combatants;
     int turnNumber = 0;
     std::unordered_map<int, MoveIntent> intents;
     // Constructor
@@ -45,5 +49,12 @@ struct GameState
     void clearTile(Position pos)
     {
         positionIndex[toIndex(pos)] = EMPTY_TILE;
+    }
+    auto findById(int id) {
+
+        auto it = std::find_if(entities.begin(), entities.end(), [&](const Entity& s) {
+            return s.id == id;
+            });
+        return it;
     }
 };

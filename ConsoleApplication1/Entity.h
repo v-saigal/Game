@@ -11,6 +11,8 @@ class Entity
 		std::string name;
 		int health = 10;
 		Position position;
+		bool engagedInCombat = false;
+		bool alive = true;
 		Entity(std::string _name, Position _position, int _entityID);
 		void move(int destX, int destY);
 

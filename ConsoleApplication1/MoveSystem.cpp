@@ -63,10 +63,10 @@ void MoveSystem::generateMoveIntents(GameState& gs)
 }
 void MoveSystem::resolveMoveIntents(GameState& gs)
 {
+    std::unordered_set<Position, PositionHash> approvedTargets;
 
     for (auto& entity : gs.entities) {
         MoveIntent& entityIntent = gs.intents[entity.id];
-        std::unordered_set<Position, PositionHash> approvedTargets;
         while (entityIntent.approved == false)
         {
             if (entity.position == entityIntent.target) {
@@ -92,21 +92,22 @@ void MoveSystem::applyFallback(Entity& entity, GameState& gs) {
         int modifier = yDist / abs(yDist);
         gs.intents[entity.id].target.y += modifier;
     } 
-    if (xDist != 0) {
+    else if (xDist != 0) {
         int modifier = xDist / abs(xDist);
         gs.intents[entity.id].target.x += modifier;
     }
 }
 
 void MoveSystem::executeMoveIntents(GameState& gs, TurnResult& tr) {
-    for (auto& entity : gs.entities) {
-        Position newPos = gs.intents[entity.id].target;
+    for (auto& intent : gs.intents) {
+        Position newPos = intent.second.target;
+        Entity& entity = *gs.findById(intent.first);
         int newIndex = gs.toIndex(newPos);
         GameEvent e;
         e.type = EventType::Move;
         e.data = MoveEvent{ entity.id, entity.position, newPos };
 
-        gs.clearTile(newPos);
+        gs.clearTile(entity.position);
 
         entity.position = newPos;
 
