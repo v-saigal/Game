@@ -57,4 +57,11 @@ struct GameState
             });
         return it;
     }
+    void rebuildPosIndex() {
+        positionIndex.assign(map.height * map.width, EMPTY_TILE);
+        for (auto entity : entities) {
+            setEntity(entity.position, entity.id);
+        }
+
+    }
 };

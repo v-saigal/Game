@@ -102,16 +102,13 @@ void MoveSystem::executeMoveIntents(GameState& gs, TurnResult& tr) {
     for (auto& intent : gs.intents) {
         Position newPos = intent.second.target;
         Entity& entity = *gs.findById(intent.first);
-        int newIndex = gs.toIndex(newPos);
         GameEvent e;
         e.type = EventType::Move;
         e.data = MoveEvent{ entity.id, entity.position, newPos };
 
-        gs.clearTile(entity.position);
 
         entity.position = newPos;
 
-        gs.positionIndex[newIndex] = entity.id;
 
         tr.events.push_back(e);
 

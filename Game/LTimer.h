@@ -1,6 +1,3 @@
-/*This source code copyrighted by Lazy Foo' Productions 2004-2026
-and may not be redistributed without written permission.*/
-
 #ifndef LTIMER_H
 #define LTIMER_H
 

@@ -154,7 +154,6 @@
     <ClInclude Include="EventType.h" />
     <ClInclude Include="GameEvent.h" />
     <ClInclude Include="GameState.h" />
-    <ClInclude Include="gGlobal.h" />
     <ClInclude Include="GridUtils.h" />
     <ClInclude Include="Location.h" />
     <ClInclude Include="Map.h" />
